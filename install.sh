@@ -16,7 +16,7 @@ sudo apt install ant -y
 # Create folder structure 
 mkdir master
 mkdir master/abs
-cd ~/ABS-visualizations/master/abs
+cd ~/visualization-abs/master/abs
 
 # Clone abs
 git clone https://github.com/abstools/abstools.git
@@ -26,7 +26,7 @@ cd abstools/frontend
 ant dist
 
 # Install hyvar
-cd ~/ABS-visualizations/master/abs
+cd ~/visualization-abs/master/abs
 git clone https://github.com/HyVar/abs_optimizer.git
 
 # Install meteor 
@@ -39,6 +39,6 @@ sudo apt-get install -y nodejs
 # Install Meteor Up for easy deployment 
 sudo npm install --global mup
 
-cd ~/ABS-visualizations/meteor/master
+cd ~/visualization-abs/meteor/master
 sudo npm install
 sudo npm update
