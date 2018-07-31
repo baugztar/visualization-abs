@@ -15,3 +15,5 @@ https://github.com/HyVar/abs_optimizer
 4. To run meteor: `cd meteor/master/ && meteor`
 
 Make sure the server is able to handle connections on port 3000.
+
+To make fetch requests against a running model-API, use a chrome extension which enables CORS and adds to header response 'Allow-Control-Allow-Origin: *'. 
