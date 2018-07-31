@@ -1,0 +1,15 @@
+{
+  "name": "master",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "d3": "^4.12.2",
+    "meteor-node-stubs": "^0.3.2",
+    "mongodb": "^3.0.1",
+    "plotly": "^1.0.6",
+    "jquery": "^3.3.1"
+  }
+}

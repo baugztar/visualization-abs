@@ -1,0 +1,138 @@
+<template name="availableSimulations">
+   <select class="center" id="fullSimul">
+    <option disabled selected value> -- select a simulation -- </option>
+    {{#each simul in getSimulations}}
+        <option value="{{simul._id}}">{{simul.inserted}}</option>
+    {{/each}} 
+  </select>
+
+  <!-- Dropdown to display methods -->
+  <select class="center" id="fullMethod">
+  <option disabled selected value> -- select dataset to display -- </option>
+  {{#each method in getMethods}}
+      <option value="{{method}}">{{method}}</option>
+  {{/each}}
+  </select>
+
+  <!-- Dataset dropwdown -->
+  <select class="center" id="fullDataSet disabled">
+      <option disabled selected value> -- select dataset to display -- </option>
+      {{#if methodSelected}}
+          {{#each dataset in getFullDataSet}}
+          <option value="{{dataset.value}}">{{dataset.key}}</option>
+          {{/each}}
+      {{/if}}
+  </select>
+
+  <select id="typeselectFinal">
+    <option value="lines">Lines</option>
+    <option value="lines+markers">Lines &amp; Markers</option>
+    <option value="markers">Markers</option>
+  </select>
+
+  <div id="finalRender">
+  </div>
+  </template>
+
+
+<template name="sims">
+  <!-- If filter type is selected by the user, render slider and radio buttons -->
+  {{#if getFilter}}
+  <form id="radioform">
+  <input type="radio" name="filterType" value=">" checked> Above
+  <input type="radio" name="filterType" value="<" checked> Under
+  </form>
+  <input type="range" min="1" max="100" value="50" step="5" class="slider" id="filterRange">
+  {{/if}}
+  <div id="simContainer">
+    <div id="simList">
+    {{#if placeholder}}
+    <p id="placeholder" class="placeholderStyle">Select datasets from the dropdowns below to display a plot</p>
+    {{/if}}
+    </div>
+  </div>
+  <div id="selects">
+  <select id="method" class="form-control" size="7">
+    <option disabled selected value required> -- select component to display -- </option>
+    {{#each method in getMethodNames}}
+      <option value="{{method.namo}}">{{method}}</option>
+    {{/each}}
+  </select>
+
+  <select id="dataset" class="form-control" size="7" disabled>
+    <option disabled selected value required> -- select dataset to display -- </option>
+    {{#each dataset in getDataset}}
+      <option value="{{dataset.value}}">{{dataset.key}}</option>
+    {{/each}}
+  </select>
+  <select id="plotselect" class="form-control" size="7" disabled>
+    <option disabled value> -- select graph type-- </option>
+    <option selected value="scattergl">Scatter</option>
+    <option value="filled">Filled</option>
+    <option value="bar">Bar</option>
+    <option value="histogram">Histogram</option>
+    <option value="filter">Filter</option>
+  </select>
+
+  
+  <select id="typeselect" class="form-control" size="7" disabled>
+    <option disabled value> -- select display mode -- </option>
+    <option selected value="lines">Lines</option>
+    <option value="lines+markers">Lines &amp; Markers</option>
+    <option value="markers">Markers</option>
+  </select>
+</div>
+
+  <div>
+    <h3>{{getCoordinates}}</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+          </tr>
+        </thead>
+    <tbody>
+    {{#if clicked}}
+    {{#each stats in getStatistics}}
+      <tr>
+        <td>{{stats.key}}</td>
+        <td>{{stats.val}}</td>
+      </tr>
+    {{/each}}
+    {{else}}
+     <tr>
+          <td>Click graph to display full data</td>
+    </tr>
+    {{/if}}
+    </tbody>
+    </table>
+  </div>
+</template>
+
+
+<template name="subplotTemplate">
+  <div align="center">
+  {{#if placeholder}}
+    <p id="placeholder_sub" class="placeholderStyle">Select a dataset from the dropdowns below to display subplots</p>
+  {{/if}}
+  <div class="selects">
+  <select class="form-control" id="subplotsimulations" size="7">
+    <option disabled selected value> -- select a simulation -- </option>
+    {{#each simul in getSimulations}}
+      <option value="{{simul._id}}">{{simul.inserted}}</option>
+    {{/each}}
+  </select>
+  <select class="form-control" id="subplotdataset" size="7">
+    <option disabled selected value> -- select a component -- </option>
+    {{#each dataset in getDataset}}
+      <option value="{{dataset}}">{{dataset}}</option>
+    {{/each}}
+  </select>
+</div>
+</div>
+  <div id="subplot">
+  </div>
+</template>
+
+

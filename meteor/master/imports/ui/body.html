@@ -1,0 +1,43 @@
+<!-- Delete button template -->
+<template name="delete">
+  <div align="center" id="deleteDiv">
+    <h2 class="text-center">Delete simulation</h2>
+   <select class="center" id="deletesimulations">
+    <!-- List simulations -->
+    <option disabled selected value> -- select a simulation -- </option>
+    {{#each simul in simulations}}
+      <option value="{{simul._id}}">{{simul.inserted}}</option>
+    {{/each}}
+  </select>
+  <button type="button" class="delete" id="btndelete">Delete simulation</button>
+</div>
+</template>
+
+<body>
+  {{#if Template.subscriptionsReady}}
+  <div align="center" style="margin-top: 20px ">
+    <button type="button" class="fetchData btn-info" id="btnfetch">Fetch running simulation</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1 class="text-center">ABS visualizations</h1>
+    </header>
+<hr>
+<!--{{> newdiv}}--> 
+<div align="center" style="margin-bottom:50px">
+  {{> sims}}
+<hr>
+  {{> availableSimulations}}   
+</div>
+</div>
+<div align="center" style="margin-bottom:50px">
+{{> subplotTemplate}}
+{{> delete}}
+</div>
+<!-- Placeholder text before initial data is loaded -->
+{{else}}
+<h1>Loading data....</h1>
+{{/ if}}
+</body>
+
